@@ -28,6 +28,22 @@ const routes = [
 		},
 	},
 	{
+		method: postMessage,
+		path: "/user",
+		handler: (request, h) => {
+			const response = h.response("success");
+			response.type("text/plain");
+			response.header("X-Custom", "some-value");
+			return response;
+		},
+		// 	return h
+		// 		.response("success")
+		// 		.type("text/plain")
+		// 		.header("X-Custom", "some-value");
+		//
+		// or
+	},
+	{
 		method: "GET",
 		path: "/users/{username?}",
 		handler: (request, h) => {
@@ -39,6 +55,7 @@ const routes = [
 			return `Hello, ${username}`;
 		},
 	},
+
 	{
 		method: "*",
 		path: "/{any*}",
